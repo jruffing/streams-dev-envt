@@ -15,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.network "public_network", :bridge => 'en0: Wi-Fi (AirPort)'
   end
 
-  config.vm.define "func-ui-test" do |minion|    
+  config.vm.define "func-ui-test" do |func-ui-test|    
     minion.vm.box = "trusty"
     minion.vm.host_name = "func-ui-test"
     minion.vm.network :private_network, ip: "192.168.56.103"
