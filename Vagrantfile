@@ -12,19 +12,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.box = "saucy"
     master.vm.host_name = "master"
     master.vm.network :private_network, ip: "192.168.56.102"    
-    master.vm.network "public_network", :bridge => 'en0: Ethernet (AirPort)'
+    master.vm.network "public_network", :bridge => 'en0: Wi-Fi (AirPort)'
   end
 
-  config.vm.define "func-ui-test" do |minion|    
-    minion.vm.box = "saucy"
-    minion.vm.host_name = "func-ui-test"
-    minion.vm.network :private_network, ip: "192.168.56.103"
-    minion.vm.network "public_network", :bridge => 'en0: Ethernet (AirPort)'
-    minion.vm.provision :salt do |salt|
+  config.vm.define "uitest" do |uitest|    
+    uitest.vm.box = "utopic"
+    uitest.vm.host_name = "uitest"
+    uitest.vm.network :private_network, ip: "192.168.56.103"
+    uitest.vm.network "public_network", :bridge => 'en0: Wi-Fi (AirPort)'
+    uitest.vm.provision :salt do |salt|
       salt.run_highstate = true
-      salt.minion_config = "./func-ui-test.conf"
-      salt.minion_key = "./func-ui-test.pem"
-      salt.minion_pub = "./func-ui-test.pub"
+      salt.minion_config = "./uitest.conf"
+      salt.minion_key = "./uitest.pem"
+      salt.minion_pub = "./uitest.pub"
     end 
   end
   
@@ -32,7 +32,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     minion.vm.box = "saucy"
     minion.vm.host_name = "minion"
     minion.vm.network :private_network, ip: "192.168.56.104"
-    minion.vm.network "public_network", :bridge => 'en0: Ethernet (AirPort)'
+    minion.vm.network "public_network", :bridge => 'en0: Wi-Fi (AirPort)'
     minion.vm.provision :salt do |salt|
       salt.run_highstate = true
       salt.minion_config = "./minion.conf"
