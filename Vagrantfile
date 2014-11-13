@@ -9,14 +9,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vbguest.auto_update = true
 
   config.vm.define "master" do |master|
-    master.vm.box = "utopic"
+    master.vm.box = "saucy"
     master.vm.host_name = "master"
     master.vm.network :private_network, ip: "192.168.56.102"    
     master.vm.network "public_network", :bridge => 'en0: Ethernet (AirPort)'
   end
 
   config.vm.define "uitest" do |uitest|    
-    uitest.vm.box = "utopic"
+    uitest.vm.box = "saucy"
     uitest.vm.host_name = "uitest"
     uitest.vm.network :private_network, ip: "192.168.56.103"
     uitest.vm.network "public_network", :bridge => 'en0: Wi-Fi (AirPort)'
@@ -29,7 +29,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   
     config.vm.define "minion" do |minion|    
-    minion.vm.box = "utopic"
+    minion.vm.box = "saucy"
     minion.vm.host_name = "minion"
     minion.vm.network :private_network, ip: "192.168.56.104"
     minion.vm.network "public_network", :bridge => 'en0: Wi-Fi (AirPort)'
