@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.box = "saucy"
     master.vm.host_name = "master"
     master.vm.network :private_network, ip: "192.168.56.102"    
-    master.vm.network "public_network", :bridge => 'en0: Ethernet (AirPort)'
+    master.vm.network "public_network", :bridge => 'en0: Wi-Fi (AirPort)'
   end
 
   config.vm.define "uitest" do |uitest|    
